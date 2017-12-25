@@ -1,0 +1,138 @@
+[
+    {
+        "id": "7a448b1c.86aa34",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "ec764cc5.b5a7b",
+        "type": "switch",
+        "z": "7a448b1c.86aa34",
+        "name": "choose",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "734b7a02.2d38b4"
+            ],
+            [
+                "fe778a06.817478"
+            ]
+        ]
+    },
+    {
+        "id": "acd41018.19974",
+        "type": "rpi-gpio in",
+        "z": "7a448b1c.86aa34",
+        "name": "SWITCH",
+        "pin": "7",
+        "intype": "up",
+        "debounce": "25",
+        "read": true,
+        "x": 100,
+        "y": 420,
+        "wires": [
+            [
+                "ec764cc5.b5a7b"
+            ]
+        ]
+    },
+    {
+        "id": "734b7a02.2d38b4",
+        "type": "change",
+        "z": "7a448b1c.86aa34",
+        "name": "chage to 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [
+                "67a84450.56871c",
+                "a0f85607.3b4048"
+            ]
+        ]
+    },
+    {
+        "id": "fe778a06.817478",
+        "type": "change",
+        "z": "7a448b1c.86aa34",
+        "name": "chage to 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 486.9166717529297,
+        "y": 452.26387786865234,
+        "wires": [
+            [
+                "67a84450.56871c",
+                "a0f85607.3b4048"
+            ]
+        ]
+    },
+    {
+        "id": "67a84450.56871c",
+        "type": "rpi-gpio out",
+        "z": "7a448b1c.86aa34",
+        "name": "LED",
+        "pin": "11",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 730,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "a0f85607.3b4048",
+        "type": "debug",
+        "z": "7a448b1c.86aa34",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 770,
+        "y": 460,
+        "wires": []
+    }
+]
